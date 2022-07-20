@@ -43,7 +43,11 @@
                 </div>
                 <a class="dropdown-item" href="{{ route('admin.profile') }}">My Profile</a>
                 <a class="dropdown-item" href="{{ route('admin.edit_profile') }}">Edit Profile</a>
-                <a class="dropdown-item" href="{{ route('login') }}">Logout</a>
+                <a class="dropdown-item" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();" href="{{ route('logout') }}">Logout</a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </div>
         </li>
         <!-- /User Menu -->

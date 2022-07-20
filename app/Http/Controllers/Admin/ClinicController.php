@@ -44,7 +44,6 @@ class ClinicController extends Controller
             'speciality_name' => 'required',
             'description' => 'required',
             'image' => 'required',
-            'speciality_name' => 'required'
         ]);
 
         // upload the file
@@ -57,7 +56,6 @@ class ClinicController extends Controller
             'speciality_name' => $request->name,
             'description' => $request->description,
             'image' => $new_image,
-            'speciality_name' => $request->speciality_name,
         ]);
 
         $notification = array(
@@ -106,7 +104,6 @@ class ClinicController extends Controller
             'speciality_name' => 'required',
             'description' => 'required',
             'image' => 'nullable',
-            'speciality_name' => 'required'
         ]);
 
         //old Image
@@ -126,7 +123,6 @@ class ClinicController extends Controller
             'speciality_name' => $request->name,
             'description' => $request->description,
             'image' => $new_image,
-            'speciality_name' => $request->speciality_name
         ]);
 
         $notification = array(

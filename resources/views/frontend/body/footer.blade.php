@@ -14,25 +14,6 @@
                         </div>
                         <div class="footer-about-content">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                            <div class="social-icon">
-                                <ul>
-                                    <li>
-                                        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i> </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank"><i class="fab fa-twitter"></i> </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#" target="_blank"><i class="fab fa-dribbble"></i> </a>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                     <!-- /Footer Widget -->
@@ -45,11 +26,10 @@
                     <div class="footer-widget footer-menu">
                         <h2 class="footer-title">For Patients</h2>
                         <ul>
-                            <li><a href="search.html">Search for Doctors</a></li>
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="register.html">Register</a></li>
+                            <li><a href="{{ route('site.index') }}">Search for Doctors</a></li>
+                            <li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="{{ route('register') }}">Register</a></li>
                             <li><a href="booking.html">Booking</a></li>
-                            <li><a href="patient-dashboard.html">Patient Dashboard</a></li>
                         </ul>
                     </div>
                     <!-- /Footer Widget -->
@@ -62,11 +42,9 @@
                     <div class="footer-widget footer-menu">
                         <h2 class="footer-title">For Doctors</h2>
                         <ul>
-                            <li><a href="appointments.html">Appointments</a></li>
-                            <li><a href="chat.html">Chat</a></li>
-                            <li><a href="login.html">Login</a></li>
-                            <li><a href="doctor-register.html">Register</a></li>
-                            <li><a href="doctor-dashboard.html">Doctor Dashboard</a></li>
+                            <li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="doctor-{{ route('register') }}">Register</a></li>
+                            <li><a href="{{ route('admin.doctor.index') }}">Doctor Dashboard</a></li>
                         </ul>
                     </div>
                     <!-- /Footer Widget -->
@@ -109,22 +87,10 @@
             <!-- Copyright -->
             <div class="copyright">
                 <div class="row">
-                    <div class="col-md-6 col-lg-6">
+                    <div class="col-md-6 col-lg-6 ml-2">
                         <div class="copyright-text">
-                            <p class="mb-0">&copy; 2020 Doccure. All rights reserved.</p>
+                            <p class="mb-0">&copy; {{ now()->year }} / {{ now()->year+1 }} Doccure. All rights reserved.</p>
                         </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6">
-
-                        <!-- Copyright Menu -->
-                        <div class="copyright-menu">
-                            <ul class="policy-menu">
-                                <li><a href="term-condition.html">Terms and Conditions</a></li>
-                                <li><a href="privacy-policy.html">Policy</a></li>
-                            </ul>
-                        </div>
-                        <!-- /Copyright Menu -->
-
                     </div>
                 </div>
             </div>

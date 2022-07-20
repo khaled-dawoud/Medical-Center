@@ -9,13 +9,13 @@
                     <span></span>
                 </span>
             </a>
-            <a href="index.html" class="navbar-brand logo">
+            <a href="{{ route('site.index') }}" class="navbar-brand logo">
                 <img src="{{ asset('frontend/assets/img/logo.png') }}" class="img-fluid" alt="Logo">
             </a>
         </div>
         <div class="main-menu-wrapper">
             <div class="menu-header">
-                <a href="index.html" class="menu-logo">
+                <a href="{{ route('site.index') }}" class="menu-logo">
                     <img src="{{ asset('frontend/assets/img/logo.png') }}" class="img-fluid" alt="Logo">
                 </a>
                 <a id="menu_close" class="menu-close" href="javascript:void(0);">
@@ -24,7 +24,7 @@
             </div>
             <ul class="main-nav">
                 <li class="active">
-                    <a href="index.html">Home</a>
+                    <a href="{{ route('site.index') }}">Home</a>
                 </li>
                 <li class="has-submenu">
                     <a href="">Doctors <i class="fas fa-chevron-down"></i></a>
@@ -85,7 +85,7 @@
                     </ul>
                 </li>
                 <li class="has-submenu">
-                    <a href="">Blog </a>
+                    <a href="{{ route('site.all_blogs') }}">Blog </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.index') }}" target="_blank">Admin</a>
@@ -106,7 +106,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link header-login" href="login.html">login / Signup </a>
+                <a class="nav-link header-login" href="{{ route('login') }}">login / Signup </a>
             </li>
         </ul>
     </nav>

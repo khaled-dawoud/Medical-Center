@@ -62,14 +62,13 @@
 								<div class="doc-info-right">
 									<div class="clini-infos mb-4">
 										<ul>
-											<li><i class="far fa-thumbs-up"></i> 99%</li>
-											<li><i class="far fa-comment"></i> 35 Feedback</li>
+											<li><i class="far fa-comment"></i>{{ round($doctor->review->avg('stars'), 0) }} </li>
 											<li><i class="fas fa-map-marker-alt"></i> {{ $doctor->address }}</li>
 											<li><i class="far fa-money-bill-alt"></i> ${{ $doctor->price }} </li>
 										</ul>
 									</div>
 									<div class="clinic-booking">
-										<a class="apt-btn" href="booking.html">Book Appointment</a>
+										<a class="apt-btn" href="{{ route('site.book',$doctor->id) }}">Book Appointment</a>
 									</div>
 								</div>
 							</div>
@@ -220,30 +219,6 @@
 											</div>
 											<!-- /Clinic Content -->
 
-                                            <!-- Clinic Timing -->
-											<div class="col-md-4">
-												<div class="clinic-timing">
-													<div>
-														<p class="timings-days">
-															<span> Mon - Sat </span>
-														</p>
-														<p class="timings-times">
-															<span>10:00 AM - 2:00 PM</span>
-															<span>4:00 PM - 9:00 PM</span>
-														</p>
-													</div>
-													<div>
-													<p class="timings-days">
-														<span>Sun</span>
-													</p>
-													<p class="timings-times">
-														<span>10:00 AM - 2:00 PM</span>
-													</p>
-													</div>
-												</div>
-											</div>
-											<!-- /Clinic Timing -->
-
 
 											<div class="col-md-2">
 												<div class="consult-price">
@@ -264,43 +239,42 @@
 										<ul class="comments-list">
 
 											<!-- Comment List -->
+                                            @foreach ( $reviews as $review)
+
 											<li>
 												<div class="comment">
 													<img class="avatar avatar-sm rounded-circle" alt="User Image" src="{{ asset('frontend/assets/img/patients/patient.jpg') }}">
 													<div class="comment-body">
 														<div class="meta-data">
-															<span class="comment-author">Richard Wilson</span>
-															<span class="comment-date">Reviewed 2 Days ago</span>
+															<span class="comment-author"> {{ $review->user->name }} </span>
+															<span class="comment-date">{{ $review->created_at->diffForHumans() }}</span>
 															<div class="review-count rating">
-																<i class="fas fa-star filled"></i>
-																<i class="fas fa-star filled"></i>
-																<i class="fas fa-star filled"></i>
-																<i class="fas fa-star filled"></i>
-																<i class="fas fa-star"></i>
+																@php
+                                                                    $stars = round($review->stars, 0);
+                                                                    $count = 1;
+                                                                    $result = "";
+                                                                    for($i = 1; $i <= 5; $i++){
+                                                                        if($stars >= $count){
+                                                                            $result .= '<span><i class="fas fa-star filled"></i></span>';
+                                                                        } else {
+                                                                            $result .= '<span><i class="fas fa-star"></i></span>';
+                                                                        }
+                                                                        $count++;
+                                                                    }
+                                                                    echo $result;
+                                                                @endphp
 															</div>
 														</div>
 														<p class="recommended"><i class="far fa-thumbs-up"></i> I recommend the doctor</p>
-														<p class="comment-content">
-															Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-															sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-															Ut enim ad minim veniam, quis nostrud exercitation.
-															Curabitur non nulla sit amet nisl tempus
-														</p>
+														<p class="comment-content">{{ $review->commets }}</p>
 													</div>
 												</div>
 
 											</li>
+                                            @endforeach
 											<!-- /Comment List -->
 
 										</ul>
-
-										<!-- Show All -->
-										<div class="all-feedback text-center">
-											<a href="#" class="btn btn-primary btn-sm">
-												Show all feedback <strong>(167)</strong>
-											</a>
-										</div>
-										<!-- /Show All -->
 
 									</div>
 									<!-- /Review Listing -->

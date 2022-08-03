@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Doctor;
 use App\Models\SearchDoctor;
 use Illuminate\Http\Request;
 
@@ -28,5 +29,17 @@ class SearchDoctorController extends Controller
         );
 
         return redirect()->back()->with($notification);
+    }
+
+    public function search()
+    {
+        $search = request()->input('search');
+        if (!empty($search)) {
+            $doctors = Doctor::query()
+                ->where('name', 'LIKE', "%{$search}%")->get();
+            return view('frontend.search', compact('doctors'));
+        } else {
+            return redirect()->back();
+        }
     }
 }

@@ -41,7 +41,7 @@
                                                 <ul class="entry-meta meta-item">
                                                     <li>
                                                         <div class="post-author">
-                                                            <a href="{{ route('site.doctor_details', $docor->id) }}"><img src="{{ asset('uploads/images/doctors/'.$blog->doctor->image) }}" alt="Post Author"> <span>{{ $blog->doctor->name }}</span></a>
+                                                            <a href="{{ route('site.doctor_details', $blog->doctor->id) }}"><img src="{{ asset('uploads/images/doctors/'.$blog->doctor->image) }}" alt="Post Author"> <span>{{ $blog->doctor->name }}</span></a>
                                                         </div>
                                                     </li>
                                                     <li><i class="far fa-clock"></i>{{ $blog->created_at->format('d M,Y') }}</li>
@@ -89,21 +89,6 @@
 
 						<!-- Blog Sidebar -->
 						<div class="col-lg-4 col-md-12 sidebar-right theiaStickySidebar">
-
-							<!-- Search -->
-							<div class="card search-widget">
-								<div class="card-body">
-									<form class="search-form">
-										<div class="input-group">
-											<input type="text" placeholder="Search..." class="form-control">
-											<div class="input-group-append">
-												<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-											</div>
-										</div>
-									</form>
-								</div>
-							</div>
-							<!-- /Search -->
 
 							<!-- Latest Posts -->
 							<div class="card post-widget">

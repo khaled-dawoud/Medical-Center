@@ -1,7 +1,8 @@
 @extends('backend.master')
 @section('title' , 'Search Doctor | ' . env('APP_NAME'))
 @section('content')
-    <!-- Page Wrapper -->
+    @can('viewAny' , $search_doctor)
+        <!-- Page Wrapper -->
     <div class="page-wrapper">
         <div class="content container-fluid">
 
@@ -42,4 +43,5 @@
         </div>
     </div>
     <!-- /Page Wrapper -->
+    @endcan
 @stop

@@ -19,4 +19,14 @@ class Doctor extends Model
     {
         return $this->hasMany(Reviw::class);
     }
+
+    public function appintments()
+    {
+        return $this->hasMany(Appointment::class);
+    }
+
+    function day()
+    {
+        return $this->hasMany(Day::class);
+    }
 }

@@ -19,12 +19,16 @@
 		<!-- Main CSS -->
 		<link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
 
+		{{-- toastr --}}
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"/>
+		@yield('styles')
+
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
 			<script src="assets/js/html5shiv.min.js"></script>
 			<script src="assets/js/respond.min.js"></script>
 		<![endif]-->
-
+            @yield('styles')
 	</head>
 	<body>
 
@@ -48,6 +52,26 @@
 
 		<!-- Custom JS -->
 		<script src="{{ asset('frontend/assets/js/script.js') }}"></script>
-
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        <script>
+            @if(Session::has('message'))
+            var type = "{{ Session::get('alert-type','info') }}"
+            switch(type){
+               case 'info':
+               toastr.info(" {{ Session::get('message') }} ");
+               break;
+               case 'success':
+               toastr.success(" {{ Session::get('message') }} ");
+               break;
+               case 'warning':
+               toastr.warning(" {{ Session::get('message') }} ");
+               break;
+               case 'error':
+               toastr.error(" {{ Session::get('message') }} ");
+               break;
+            }
+            @endif
+           </script>
+        @yield('scripts')
 	</body>
 </html>

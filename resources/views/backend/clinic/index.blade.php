@@ -45,12 +45,15 @@
                                             <td><img width="100" src="{{ asset('uploads/images/clinics/'.$speciality->image) }}"></td>
                                             <td>{{ $speciality->speciality_name }}</td>
                                             <td>
+                                                @can('update' , $speciality)
                                                 <a href="{{ route('admin.speciality.edit', $speciality->id) }}" class="btn btn-info btn-sm" title="Edit Data">  <i class="fe fe-edit"></i> </a>
                                                 <form class="d-inline" action="{{ route('admin.speciality.destroy' , $speciality->id) }}" method="POST">
                                                     @csrf
                                                     @method('delete')
                                                     <button class="btn btn-sm btn-danger" onclick="return confirm('are you sure?')"> <i class="fa fa-trash"></i></button>
-                                                </form>                                            </td>
+                                                </form>
+                                                @endcan
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>

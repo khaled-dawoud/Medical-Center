@@ -3,17 +3,26 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Appointment;
+use App\Models\Booked;
 use App\Models\Clinic;
+use App\Models\Day;
+use App\Models\Doctor;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        return view('backend.dashboard');
+        $apps = Appointment::select('id')->get();
+        $patients = User::where('type', 'user')->select('id')->get();
+        $doctor = Doctor::select('id')->get();
+        $bookeds = Booked::take(5)->latest()->get();
+        return view('backend.dashboard', compact('doctor', 'patients', 'apps', 'bookeds'));
     }
 
     public function profile()
@@ -86,5 +95,19 @@ class AdminController extends Controller
             );
             return redirect()->back()->with($notification);
         };
+    }
+
+    public function appointments($id)
+    {
+        $days = Day::with('doctor')->get();
+        $doctor = Doctor::findOrFail($id);
+        $apps = Appointment::with('doctors')->where('doctor_id', $id)->get();
+        return view('backend.appointments.appointments', compact('doctor', 'days', 'apps'));
+    }
+
+    public function booked()
+    {
+        $bookeds = Booked::with('user', 'doctor')->get();
+        return view('backend.booked', compact('bookeds'));
     }
 }

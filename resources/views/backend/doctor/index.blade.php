@@ -11,7 +11,6 @@
     <!-- Page Wrapper -->
     <div class="page-wrapper">
         <div class="content container-fluid">
-
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h1 class="h3 mb-0 text-gray-800">All Doctors</h1>
                 <a class="btn btn-info" href="{{ route('admin.doctor.create') }}">Add New Doctor</a>
@@ -35,7 +34,7 @@
                                             <th >Image</th>
                                             <th >Profie Image</th>
                                             <th >Address</th>
-                                            <th >Available</th>
+                                            <th >Appointments</th>
                                             <th >Price</th>
                                             <th >Clinic</th>
                                             <th >Action</th>
@@ -43,14 +42,15 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($doctors as $doctor)
+                                        @can('view', $doctor)
                                         <tr>
                                             <td>{{ $doctor->id }}</td>
                                             <td>{{ $doctor->name }}</td>
                                             <td><img width="100" src="{{ asset('uploads/images/doctors/'.$doctor->image) }}"></td>
                                             <td><img width="100" src="{{ asset('uploads/images/doctors/profile/'.$doctor->profile_image) }}"></td>
                                             <td>{{ $doctor->address }}</td>
-                                            <td>{{ $doctor->available }}</td>
-                                            <td>{{ $doctor->price }}</td>
+                                            <td><a href="{{ route('admin.appointments', $doctor->id) }}" class="btn btn-info btn-sm" title="Edit Data"> Appointments </a></td>
+                                            <td>${{ $doctor->price }}</td>
                                             <td>{{ $doctor->clinics->speciality_name }}</td>
                                             <td>
                                                 <a href="{{ route('admin.doctor.edit', $doctor->id) }}" class="btn btn-info btn-sm" title="Edit Data">  <i class="fe fe-edit"></i> </a>
@@ -58,8 +58,10 @@
                                                     @csrf
                                                     @method('delete')
                                                     <button class="btn btn-sm btn-danger" onclick="return confirm('are you sure?')"> <i class="fa fa-trash"></i></button>
-                                                </form>                                            </td>
+                                                </form>
+                                            </td>
                                         </tr>
+                                        @endcan
                                         @endforeach
                                     </tbody>
                                 </table>

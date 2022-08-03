@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ExperienceController;
 use App\Http\Controllers\Admin\FeatuerController;
 use App\Http\Controllers\Admin\FeatuerDescController as AdminFeatuerDescController;
 use App\Http\Controllers\Admin\SearchDoctorController;
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\Site\SiteController;
@@ -43,6 +44,9 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'CheckUserType')->gro
     Route::resource('education', EducationController::class);
     Route::resource('experience', ExperienceController::class);
     Route::resource('award', AwardsController::class);
+    Route::get('/appointments/{id}', [AdminController::class, 'appointments'])->name('appointments');
+    Route::resource('appointment', AppointmentController::class);
+    Route::get('/booked', [AdminController::class, 'booked'])->name('booked');
 });
 
 
@@ -53,12 +57,17 @@ Route::controller(SiteController::class)->name('site.')->group(function () {
     Route::get('/all-blogs/{id}', 'blog_details')->name('blog_details');
     Route::get('/doctor_details/{id}', 'doctor_details')->name('doctor_details');
     Route::post('/add-review', 'add_review')->name('add_review');
+    Route::get('/book/{id}', 'book')->name('book');
+    Route::get('/all-doctors', 'all_doctors')->name('all_doctors');
+    Route::get('/checkout/{id}/{start}/{end}/{day}', 'checkout')->name('checkout');
+    Route::get('/checkout/thanks/{id}/{start}/{end}/{day}', 'checkout_thanks')->name('checkout_thanks');
 });
 
 //Search Doctor Routs
 Route::controller(SearchDoctorController::class)->group(function () {
     Route::get('/search-doctor', 'Search_Doctor')->name('Search_Doctor');
     Route::post('/search-doctor/{id}', 'Search_Doctor_update')->name('Search_Doctor_update');
+    Route::get('search', 'search')->name('search');
 });
 
 //Featuer Description Routs

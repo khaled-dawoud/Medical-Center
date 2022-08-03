@@ -26,7 +26,7 @@
                     <ul style="display: none;">
                         <li><a href="{{ route('admin.doctor.index') }}">All Doctors</a></li>
                         <li><a href="{{ route('admin.doctor.create') }}">Add New Featuers</a></li>
-                        <li><a href="{{ route('doctor_description') }}">Doctor description</a></li>
+                        {{-- <li><a href="{{ route('doctor_description') }}">Doctor description</a></li> --}}
                     </ul>
                 </li>
 
@@ -70,6 +70,10 @@
                         <li><a href="{{ route('admin.award.index') }}">All Awards</a></li>
                         <li><a href="{{ route('admin.award.create') }}">Add New Award</a></li>
                     </ul>
+                </li>
+
+                <li>
+                    <a href="{{ route('admin.booked') }}"><i class="fe fe-calendar"></i> <span>Booked</span></a>
                 </li>
 
 

@@ -1,6 +1,5 @@
 @extends('frontend.master')
 @section('title' , 'Dashboard | ' . env('APP_NAME'))
-    <!-- Main Wrapper -->
 @section('content')
     <div class="main-wrapper">
                 <!-- Home Banner -->
@@ -14,16 +13,14 @@
 
                             <!-- Search -->
                             <div class="search-box d-flex justify-content-center">
-                                <form  method="GET">
+                                <form action="{{ route('search') }}"  method="GET">
+                                @csrf
                                     <div class="form-group search-info">
-                                        <input type="text" class="form-control" placeholder="Search Doctors, Clinics, Hospitals, Diseases Etc">
+                                        <input type="text" class="form-control" placeholder="Search Doctors" name="search">
                                         <span class="form-text">Ex : Dental or Sugar Check up etc</span>
                                     </div>
                                     <button type="submit" class="btn btn-primary search-btn"><i class="fas fa-search"></i> <span>Search</span></button>
                                 </form>
-                            </div>
-                            <!-- /Search -->
-
                         </div>
                     </div>
                 </section>
@@ -73,7 +70,7 @@
                                 </div>
                                 <div class="about-content">
                                     <p>{{ $doctor_desc->desc }}</p>
-                                    <a href="javascript:;">See More..</a>
+                                    <a href="{{ route('site.all_doctors') }}">See More..</a>
                                 </div>
                             </div>
                             <div class="col-lg-8">
@@ -94,12 +91,21 @@
                                                 </h3>
                                                 <p class="speciality">{{ $doctor->major }}</p>
                                                 <div class="rating">
-                                                    <i class="fas fa-star filled"></i>
-                                                    <i class="fas fa-star filled"></i>
-                                                    <i class="fas fa-star filled"></i>
-                                                    <i class="fas fa-star filled"></i>
-                                                    <i class="fas fa-star filled"></i>
-                                                    <span class="d-inline-block average-rating">(17)</span>
+                                                    @php
+                                                        $stars = round($doctor->review->avg('stars'), 0);
+                                                        $count = 1;
+                                                        $result = "";
+                                                        for($i = 1; $i <= 5; $i++){
+                                                            if($stars >= $count){
+                                                                $result .= '<span><i class="fas fa-star filled"></i></span>';
+                                                            } else {
+                                                                $result .= '<span><i class="fas fa-star"></i></span>';
+                                                            }
+                                                            $count++;
+                                                        }
+                                                        echo $result;
+                                                    @endphp
+                                                    <span class="d-inline-block average-rating">({{  round($doctor->review->avg('stars'), 0) }})</span>
                                                 </div>
                                                 <ul class="available-info">
                                                     <li>
@@ -110,7 +116,6 @@
                                                     </li>
                                                     <li>
                                                         <i class="far fa-money-bill-alt"></i> ${{ $doctor->price }}
-                                                        <i class="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum"></i>
                                                     </li>
                                                 </ul>
                                                 <div class="row row-sm">
@@ -118,7 +123,7 @@
                                                         <a href="{{ route('site.doctor_details', $doctor->id) }}" class="btn view-btn">View Profile</a>
                                                     </div>
                                                     <div class="col-6">
-                                                        <a href="booking.html" class="btn book-btn">Book Now</a>
+                                                        <a href="{{ route('site.book',$doctor->id ) }}" class="btn book-btn">Book Now</a>
                                                     </div>
                                                 </div>
                                             </div>

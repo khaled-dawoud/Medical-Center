@@ -8,6 +8,7 @@ use App\Models\Booked;
 use App\Models\Clinic;
 use App\Models\Day;
 use App\Models\Doctor;
+use App\Models\Number;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,26 @@ class AdminController extends Controller
         $doctor = Doctor::select('id')->get();
         $bookeds = Booked::take(5)->latest()->get();
         return view('backend.dashboard', compact('doctor', 'patients', 'apps', 'bookeds'));
+    }
+
+    public function number()
+    {
+        $number = Number::first();
+        return view('backend.number', compact('number'));
+    }
+
+    public function number_update(Request $request)
+    {
+        $id = $request->id;
+        Number::findOrFail($id)->update([
+            'number' => $request->number,
+        ]);
+        $notification = array(
+            'message' => 'Phone Number Updated Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
     }
 
     public function profile()

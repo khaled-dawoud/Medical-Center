@@ -39,20 +39,20 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($awards as $award)
-                                        <tr>
-                                            <td>{{ $award->id }}</td>>
-                                            <td>{{ $award->date }}</td>
-                                            <td>{{ $award->title }}</td>
-                                            <td>{{ $award->doctor->name }}</td>
-                                            <td>
-                                                <a href="{{ route('admin.award.edit', $award->id) }}" class="btn btn-info btn-sm" title="Edit Data">  <i class="fe fe-edit"></i> </a>
-                                                <form class="d-inline" action="{{ route('admin.award.destroy' , $award->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button class="btn btn-sm btn-danger" onclick="return confirm('are you sure?')"> <i class="fa fa-trash"></i></button>
-                                                </form>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td>{{ $award->id }}</td>>
+                                                <td>{{ $award->date }}</td>
+                                                <td>{{ $award->title }}</td>
+                                                <td>{{ $award->doctor->name }}</td>
+                                                <td>
+                                                    <a href="{{ route('admin.award.edit', $award->id) }}" class="btn btn-info btn-sm" title="Edit Data">  <i class="fe fe-edit"></i> </a>
+                                                    <form class="d-inline" action="{{ route('admin.award.destroy' , $award->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button class="btn btn-sm btn-danger" onclick="return confirm('are you sure?')"> <i class="fa fa-trash"></i></button>
+                                                    </form>
+                                                </td>
+                                            </tr>
                                         @endforeach
                                     </tbody>
                                 </table>

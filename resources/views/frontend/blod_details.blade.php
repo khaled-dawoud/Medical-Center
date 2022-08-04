@@ -60,11 +60,11 @@
 									<div class="about-author">
 										<div class="about-author-img">
 											<div class="author-img-wrap">
-												<a href="doctor-profile.html"><img class="img-fluid rounded-circle" alt="" src="{{ asset('uploads/images/doctors/'.$blog->doctor->image) }}"></a>
+												<a href="{{ route('site.doctor_details' , $blog->doctor->id) }}"><img class="img-fluid rounded-circle" alt="" src="{{ asset('uploads/images/doctors/'.$blog->doctor->image) }}"></a>
 											</div>
 										</div>
 										<div class="author-details">
-											<a href="doctor-profile.html" class="blog-author-name">{{ $blog->doctor->name }}</a>
+											<a href="{{ route('site.doctor_details' , $blog->doctor->id) }}" class="blog-author-name">{{ $blog->doctor->name }}</a>
 											<p class="mb-0">{{ $blog->doctor->about_me }}</p>
 										</div>
 									</div>

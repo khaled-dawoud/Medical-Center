@@ -41,6 +41,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($educations as $education)
+                                        @can('view' , $education)
                                         <tr>
                                             <td>{{ $education->id }}</td>
                                             <td>{{ $education->uni_name }}</td>
@@ -57,6 +58,7 @@
                                                 </form>
                                             </td>
                                         </tr>
+                                        @endcan
                                         @endforeach
                                     </tbody>
                                 </table>

@@ -13,7 +13,9 @@
         <div class="content container-fluid">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h1 class="h3 mb-0 text-gray-800">All Doctors</h1>
+                @if (Auth::user()->type == 'admin')
                 <a class="btn btn-info" href="{{ route('admin.doctor.create') }}">Add New Doctor</a>
+                @endif
             </div>
             <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>

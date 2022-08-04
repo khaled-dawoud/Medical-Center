@@ -39,6 +39,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($experience as $experience)
+                                        @can('view', $experience)
                                         <tr>
                                             <td>{{ $experience->id }}</td>>
                                             <td>{{ $experience->place }}</td>
@@ -53,6 +54,7 @@
                                                 </form>
                                             </td>
                                         </tr>
+                                        @endcan
                                         @endforeach
                                     </tbody>
                                 </table>

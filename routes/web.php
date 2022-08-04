@@ -33,6 +33,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Admin Routs
 Route::prefix('admin')->name('admin.')->middleware('auth', 'CheckUserType')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
+    Route::get('/number', [AdminController::class, 'number'])->name('number');
+    Route::post('/number_update', [AdminController::class, 'number_update'])->name('number_update');
     Route::get('/profile', [AdminController::class, 'profile'])->name('profile');
     Route::get('/edit-profile', [AdminController::class, 'edit_profile'])->name('edit_profile');
     Route::post('/stor-profile/{id}', [AdminController::class, 'store_profile'])->name('store_profile');

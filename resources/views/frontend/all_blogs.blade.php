@@ -13,7 +13,7 @@
 									<li class="breadcrumb-item active" aria-current="page">Blog</li>
 								</ol>
 							</nav>
-							<h2 class="breadcrumb-title">Blog Grid</h2>
+							<h2 class="breadcrumb-title">Blogs</h2>
 						</div>
 					</div>
 				</div>

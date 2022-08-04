@@ -52,8 +52,8 @@
 									</div>
 								</div>
 							</div>
-							<div class="row mb-3">
-								<div class="col-12 col-sm-4 col-md-6">
+							<div class="row mb-3 ">
+								<div class="col-6 col-sm-4 col-md-6">
 									<h4 class="mb-1">
                                     @php
                                         $dt = Carbon::now();
@@ -67,7 +67,7 @@
                             </div>
 							<!-- Schedule Widget -->
 
-                            <div class="col-md-7 col-lg-8 col-xl-9">
+                            <div class="col-md-12 col-lg-8 col-xl-12">
 
                                 <div class="row">
                                     <div class="col-sm-12">

@@ -6,6 +6,9 @@
                 <li>
                     <a href="{{ route('admin.index') }}"><i class="fe fe-home"></i> <span>Dashboard</span></a>
                 </li>
+                <li>
+                    <a href="{{ route('admin.number') }}"><i class="fe fe-phone"></i> <span>Phone Number</span></a>
+                </li>
                 <li class="submenu">
                     <a href="#"><i class="fe fe-search"></i> <span>Search Doctor</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
@@ -25,7 +28,9 @@
                     <a href="#"><i class="fe fe-user-plus"></i> <span>Doctors</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
                         <li><a href="{{ route('admin.doctor.index') }}">All Doctors</a></li>
-                        <li><a href="{{ route('admin.doctor.create') }}">Add New Featuers</a></li>
+                        @if (Auth::user()->type == 'admin')
+                        <li><a href="{{ route('admin.doctor.create') }}">Add New Doctor</a></li>
+                        @endif
                         {{-- <li><a href="{{ route('doctor_description') }}">Doctor description</a></li> --}}
                     </ul>
                 </li>

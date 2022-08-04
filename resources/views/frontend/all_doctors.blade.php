@@ -52,7 +52,7 @@
 				<div class="container-fluid">
 
 	            <div class="row">
-					<div class="col-xl-7 col-lg-12 order-md-last order-sm-last order-last map-left">
+					<div class="col-xl-12 col-lg-12 order-md-last order-sm-last order-last map-left">
 
 						<div class="row align-items-center mb-4">
 							<div class="col-md-6 col">
@@ -130,7 +130,7 @@
 			<!-- /Page Content -->
 
 			<!-- Footer -->
-			@include('frontend.body.header')
+			@include('frontend.body.footer')
 			<!-- /Footer -->
 
 		</div>

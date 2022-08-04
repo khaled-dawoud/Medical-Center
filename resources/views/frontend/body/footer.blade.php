@@ -29,7 +29,7 @@
                             <li><a href="{{ route('site.index') }}">Search for Doctors</a></li>
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
-                            <li><a href="booking.html">Booking</a></li>
+                            <li><a href="{{ route('site.all_doctors') }}">Booking</a></li>
                         </ul>
                     </div>
                     <!-- /Footer Widget -->

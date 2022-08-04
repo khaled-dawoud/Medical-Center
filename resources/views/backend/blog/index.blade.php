@@ -40,6 +40,7 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($blogs as $blog)
+                                        @can('view', $blog)
                                         <tr>
                                             <td>{{ $blog->id }}</td>
                                             <td><img width="100" src="{{ asset('uploads/images/blogs/'.$blog->image) }}"></td>
@@ -55,6 +56,7 @@
                                                 </form>
                                             </td>
                                         </tr>
+                                        @endcan
                                         @endforeach
                                     </tbody>
                                 </table>

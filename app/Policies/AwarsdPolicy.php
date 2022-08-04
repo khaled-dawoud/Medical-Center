@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Clinic;
+use App\Models\Awards;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ClinicPolicy
+class AwarsdPolicy
 {
     use HandlesAuthorization;
 
@@ -25,12 +25,16 @@ class ClinicPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Clinic  $clinic
+     * @param  \App\Models\Awards  $awards
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Clinic $clinic)
+    public function view(User $user, Awards $awards)
     {
-        //
+        // if ($awards->doctor->name === $user->name || $user->type == 'admin') {
+        //     return true;
+        // } else {
+        //     return false;
+        // }
     }
 
     /**
@@ -41,47 +45,41 @@ class ClinicPolicy
      */
     public function create(User $user)
     {
-        if ($user->type == 'admin' || $user->type == 'Admin') {
-            return true;
-        }
+        //
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Clinic  $clinic
+     * @param  \App\Models\Awards  $awards
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Clinic $clinic)
+    public function update(User $user, Awards $awards)
     {
-        if ($user->type == 'admin' || $user->type == 'Admin') {
-            return true;
-        }
+        //
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Clinic  $clinic
+     * @param  \App\Models\Awards  $awards
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Clinic $clinic)
+    public function delete(User $user, Awards $awards)
     {
-        if ($user->type == 'admin' || $user->type == 'Admin') {
-            return true;
-        }
+        //
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Clinic  $clinic
+     * @param  \App\Models\Awards  $awards
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Clinic $clinic)
+    public function restore(User $user, Awards $awards)
     {
         //
     }
@@ -90,10 +88,10 @@ class ClinicPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Clinic  $clinic
+     * @param  \App\Models\Awards  $awards
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Clinic $clinic)
+    public function forceDelete(User $user, Awards $awards)
     {
         //
     }

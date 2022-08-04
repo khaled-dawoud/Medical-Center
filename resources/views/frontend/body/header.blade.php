@@ -1,3 +1,8 @@
+@php
+    use App\Models\Number;
+    $number = App\Models\Number::first();
+@endphp
+
 <!-- Header -->
 <header class="header">
     <nav class="navbar navbar-expand-lg header-nav">
@@ -47,7 +52,7 @@
                 </div>
                 <div class="header-contact-detail">
                     <p class="contact-header">Contact</p>
-                    <p class="contact-info-header"> +1 315 369 5943</p>
+                    <p class="contact-info-header">{{ $number->number }}</p>
                 </div>
             </li>
             <li class="nav-item">

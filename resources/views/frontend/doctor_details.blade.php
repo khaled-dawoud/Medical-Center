@@ -10,7 +10,7 @@
 						<div class="col-md-12 col-12">
 							<nav aria-label="breadcrumb" class="page-breadcrumb">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+									<li class="breadcrumb-item"><a href="{{ route('site.index') }}">Home</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Doctor Profile</li>
 								</ol>
 							</nav>
@@ -62,7 +62,7 @@
 								<div class="doc-info-right">
 									<div class="clini-infos mb-4">
 										<ul>
-											<li><i class="far fa-comment"></i>{{ round($doctor->review->avg('stars'), 0) }} </li>
+											<li><i class="far fa-comment"></i>{{ count($doctor->review, 0) }} </li>
 											<li><i class="fas fa-map-marker-alt"></i> {{ $doctor->address }}</li>
 											<li><i class="far fa-money-bill-alt"></i> ${{ $doctor->price }} </li>
 										</ul>
@@ -158,31 +158,6 @@
 											</div>
 											<!-- /Experience Details -->
 
-											<!-- Awards Details -->
-											<div class="widget awards-widget">
-												<h4 class="widget-title">Awards</h4>
-												<div class="experience-box">
-													<ul class="experience-list">
-                                                        @foreach ($awards as $award)
-                                                            <li>
-                                                                <div class="experience-user">
-                                                                    <div class="before-circle"></div>
-                                                                </div>
-                                                                <div class="experience-content">
-                                                                    <div class="timeline-content">
-                                                                        <p class="exp-year">{{ $award->date }}</p>
-                                                                        <h4 class="exp-title">{{ $award->title }}</h4>
-                                                                        <p>{{ $award->desc }}</p>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                        @endforeach
-
-													</ul>
-												</div>
-											</div>
-											<!-- /Awards Details -->
-
 											<!-- Specializations List -->
 											<div class="service-list">
 												<h4>Specializations</h4>
@@ -190,6 +165,18 @@
 													<li>{{ $doctor->clinics->speciality_name }}</li>
 												</ul>
 											</div>
+
+
+                                            <!-- Services List -->
+											<div class="service-list">
+												<h4>Services</h4>
+												<ul class="clearfix">
+													@foreach ($services as $ser)
+                                                    <li> {{ $ser->service }} </li>
+                                                    @endforeach
+												</ul>
+											</div>
+											<!-- /Services List -->
 											<!-- /Specializations List -->
 
 										</div>
@@ -215,7 +202,6 @@
 												</div>
 											</div>
 											<!-- /Clinic Content -->
-
 
 											<div class="col-md-2">
 												<div class="consult-price">

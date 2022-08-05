@@ -18,6 +18,7 @@ use App\Models\Featuer;
 use App\Models\FeatuerDesc;
 use App\Models\Reviw;
 use App\Models\SearchDoctor;
+use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -58,10 +59,10 @@ class SiteController extends Controller
     {
         $education = Education::where('doctor_id', $id)->get();
         $experiences = Experience::where('doctor_id', $id)->get();
-        $awards = Awards::where('doctor_id', $id)->get();
         $doctor = Doctor::with('review')->findOrFail($id);
         $reviews = Reviw::with('user')->where('doctor_id', $id)->OrderByDesc("id")->take(4)->get();
-        return view('frontend.doctor_details', compact('doctor', 'education', 'experiences', 'awards', 'reviews'));
+        $services = Service::where('doctor_id', $id)->get();
+        return view('frontend.doctor_details', compact('doctor', 'education', 'experiences', 'reviews', 'services'));
     }
 
     public function add_review(Request $request)
@@ -97,6 +98,14 @@ class SiteController extends Controller
     }
 
 
+
+
+    public function clinic_doctor($id)
+    {
+        $reviews = Reviw::select('id', 'commets')->get();
+        $doctors = Doctor::with('clinics', 'review')->where('clinic_id', $id)->get();
+        return view('frontend.clinic_doctor', compact('doctors'));
+    }
 
 
 

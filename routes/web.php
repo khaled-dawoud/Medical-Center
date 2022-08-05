@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\AwardsController;
 use App\Http\Controllers\Admin\ClinicController as AdminClinicController;
 use App\Http\Controllers\Admin\DoctorDescController as AdminDoctorDescController;
 use App\Http\Controllers\Admin\EducationController;
@@ -9,6 +8,7 @@ use App\Http\Controllers\Admin\ExperienceController;
 use App\Http\Controllers\Admin\FeatuerController;
 use App\Http\Controllers\Admin\FeatuerDescController as AdminFeatuerDescController;
 use App\Http\Controllers\Admin\SearchDoctorController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DoctorController;
@@ -45,7 +45,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'CheckUserType')->gro
     Route::resource('blog', BlogController::class);
     Route::resource('education', EducationController::class);
     Route::resource('experience', ExperienceController::class);
-    Route::resource('award', AwardsController::class);
+    Route::resource('service', ServiceController::class);
     Route::get('/appointments/{id}', [AdminController::class, 'appointments'])->name('appointments');
     Route::resource('appointment', AppointmentController::class);
     Route::get('/booked', [AdminController::class, 'booked'])->name('booked');
@@ -55,6 +55,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth', 'CheckUserType')->gro
 // Site Routs
 Route::controller(SiteController::class)->name('site.')->group(function () {
     Route::get('/', 'index')->name('index');
+    Route::get('/clinic-doctor/{id}', 'clinic_doctor')->name('clinic_doctor');
     Route::get('/all-blogs', 'all_blogs')->name('all_blogs');
     Route::get('/all-blogs/{id}', 'blog_details')->name('blog_details');
     Route::get('/doctor_details/{id}', 'doctor_details')->name('doctor_details');

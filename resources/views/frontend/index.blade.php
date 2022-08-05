@@ -42,7 +42,7 @@
                                         <!-- Slider Item -->
                                         <div class="speicality-item text-center">
                                             <div class="speicality-img">
-                                                <a href="{{ route('site.all_doctors') }}">
+                                                <a href="{{ route('site.clinic_doctor', $item->id) }}">
                                                     <img src="{{ asset('uploads/images/clinics/'.$item->image) }}" class="img-fluid" alt="Speciality">
                                                 <span><i class="fa fa-circle" aria-hidden="true"></i></span>
                                                 </a>

@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Awards;
+use App\Models\Service;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class AwarsdPolicy
+class ServicePolicy
 {
     use HandlesAuthorization;
 
@@ -25,16 +25,16 @@ class AwarsdPolicy
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Awards  $awards
+     * @param  \App\Models\Service  $service
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Awards $awards)
+    public function view(User $user, Service $service)
     {
-        // if ($awards->doctor->name === $user->name || $user->type == 'admin') {
-        //     return true;
-        // } else {
-        //     return false;
-        // }
+        if ($service->doctor->name === $user->name || $user->type == 'admin') {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -52,10 +52,10 @@ class AwarsdPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Awards  $awards
+     * @param  \App\Models\Service  $service
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Awards $awards)
+    public function update(User $user, Service $service)
     {
         //
     }
@@ -64,10 +64,10 @@ class AwarsdPolicy
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Awards  $awards
+     * @param  \App\Models\Service  $service
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Awards $awards)
+    public function delete(User $user, Service $service)
     {
         //
     }
@@ -76,10 +76,10 @@ class AwarsdPolicy
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Awards  $awards
+     * @param  \App\Models\Service  $service
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Awards $awards)
+    public function restore(User $user, Service $service)
     {
         //
     }
@@ -88,10 +88,10 @@ class AwarsdPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Awards  $awards
+     * @param  \App\Models\Service  $service
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Awards $awards)
+    public function forceDelete(User $user, Service $service)
     {
         //
     }

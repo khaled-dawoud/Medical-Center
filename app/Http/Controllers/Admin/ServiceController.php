@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Awards;
 use App\Models\Doctor;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
-class AwardsController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class AwardsController extends Controller
      */
     public function index()
     {
-        $awards = Awards::all();
-        return view('backend.award.index', compact('awards'));
+        $services = Service::all();
+        return view('backend.services.index', compact('services'));
     }
 
     /**
@@ -28,7 +28,7 @@ class AwardsController extends Controller
     public function create()
     {
         $doctors = Doctor::select('id', 'name')->get();
-        return view('backend.award.create', compact('doctors'));
+        return view('backend.services.create', compact('doctors'));
     }
 
     /**
@@ -41,25 +41,21 @@ class AwardsController extends Controller
     {
         // validate input
         $request->validate([
-            'date' => 'required',
-            'title' => 'required',
-            'desc' => 'required',
+            'service' => 'required',
             'doctor_id' => 'required'
         ]);
         // Save data to database
-        Awards::create([
-            'date' => $request->date,
-            'title' => $request->title,
-            'desc' => $request->desc,
+        Service::create([
+            'service' => $request->service,
             'doctor_id' => $request->doctor_id
         ]);
 
         $notification = array(
-            'message' => 'Awards Inserted Successfully',
+            'message' => 'Service Inserted Successfully',
             'alert-type' => 'success'
         );
 
-        return redirect()->route('admin.award.index')->with($notification);
+        return redirect()->route('admin.service.index')->with($notification);
     }
 
     /**
@@ -81,9 +77,9 @@ class AwardsController extends Controller
      */
     public function edit($id)
     {
-        $award = Awards::findOrFail($id);
+        $services = Service::findOrFail($id);
         $doctors = Doctor::select('id', 'name')->get();
-        return view('backend.award.edit', compact('doctors', 'award'));
+        return view('backend.services.edit', compact('doctors', 'services'));
     }
 
     /**
@@ -97,28 +93,23 @@ class AwardsController extends Controller
     {
         // validate input
         $request->validate([
-            'date' => 'required',
-            'title' => 'required',
-            'desc' => 'required',
+            'service' => 'required',
             'doctor_id' => 'required'
         ]);
 
-        $award = Awards::findOrFail($id);
-
+        $service = Service::findOrFail($id);
         // Save data to database
-        $award->update([
-            'date' => $request->date,
-            'title' => $request->title,
-            'desc' => $request->desc,
+        $service->update([
+            'service' => $request->service,
             'doctor_id' => $request->doctor_id
         ]);
 
         $notification = array(
-            'message' => 'Awards Updated Successfully',
-            'alert-type' => 'info'
+            'message' => 'Service Updated Successfully',
+            'alert-type' => 'success'
         );
 
-        return redirect()->route('admin.award.index')->with($notification);
+        return redirect()->route('admin.service.index')->with($notification);
     }
 
     /**
@@ -129,13 +120,13 @@ class AwardsController extends Controller
      */
     public function destroy($id)
     {
-        $award = Awards::findOrFail($id);
-        $award->delete();
+        $Service = Service::findOrFail($id);
+        $Service->delete();
         $notification = array(
-            'message' => 'Awards Deleted Successfully',
+            'message' => 'Service Deleted Successfully',
             'alert-type' => 'warning'
         );
 
-        return redirect()->route('admin.award.index')->with($notification);
+        return redirect()->route('admin.service.index')->with($notification);
     }
 }

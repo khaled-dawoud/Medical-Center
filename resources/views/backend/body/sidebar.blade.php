@@ -70,10 +70,10 @@
                 </li>
 
                 <li class="submenu">
-                    <a href="#"><i class="fe fe-medal"></i> <span>Awards</span> <span class="menu-arrow"></span></a>
+                    <a href="#"><i class="fe fe-medal"></i> <span>Services</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">
-                        <li><a href="{{ route('admin.award.index') }}">All Awards</a></li>
-                        <li><a href="{{ route('admin.award.create') }}">Add New Award</a></li>
+                        <li><a href="{{ route('admin.service.index') }}">All Services</a></li>
+                        <li><a href="{{ route('admin.service.create') }}">Add New Service</a></li>
                     </ul>
                 </li>
 

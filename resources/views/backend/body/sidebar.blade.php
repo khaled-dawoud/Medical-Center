@@ -6,9 +6,11 @@
                 <li>
                     <a href="{{ route('admin.index') }}"><i class="fe fe-home"></i> <span>Dashboard</span></a>
                 </li>
+                @if (Auth::user()->type == 'admin')
                 <li>
                     <a href="{{ route('admin.number') }}"><i class="fe fe-phone"></i> <span>Phone Number</span></a>
                 </li>
+                @endif
                 <li class="submenu">
                     <a href="#"><i class="fe fe-search"></i> <span>Search Doctor</span> <span class="menu-arrow"></span></a>
                     <ul style="display: none;">

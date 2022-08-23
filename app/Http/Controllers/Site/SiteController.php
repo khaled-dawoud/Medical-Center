@@ -30,7 +30,7 @@ class SiteController extends Controller
     public function index()
     {
         $search_doctor = SearchDoctor::findOrFail(1);
-        $Speciality = Clinic::findOrFail(3);
+        $Speciality = Clinic::findOrFail(1);
         $Specialities = Clinic::take(5)->get();
         $clinic_featuer = Featuer::take(6)->get();
         $featuer_desc = FeatuerDesc::findOrFail(1);

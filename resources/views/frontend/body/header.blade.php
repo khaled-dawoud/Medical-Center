@@ -1,5 +1,4 @@
 @php
-    use App\Models\Number;
     $number = App\Models\Number::first();
 @endphp
 

@@ -53,7 +53,7 @@ class ClinicController extends Controller
         // Save data to database
         Clinic::create([
             'title' => $request->title,
-            'speciality_name' => $request->name,
+            'speciality_name' => $request->speciality_name,
             'description' => $request->description,
             'image' => $new_image,
         ]);
@@ -120,7 +120,7 @@ class ClinicController extends Controller
         // Save data to database
         $speciality->update([
             'title' => $request->title,
-            'speciality_name' => $request->name,
+            'speciality_name' => $request->speciality_name,
             'description' => $request->description,
             'image' => $new_image,
         ]);

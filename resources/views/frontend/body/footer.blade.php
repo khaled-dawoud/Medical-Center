@@ -1,3 +1,6 @@
+@php
+$number = App\Models\Number::first();
+@endphp
 <!-- Footer -->
 <footer class="footer">
 
@@ -59,15 +62,15 @@
                         <div class="footer-contact-info">
                             <div class="footer-address">
                                 <span><i class="fas fa-map-marker-alt"></i></span>
-                                <p> 3556  Beech Street, San Francisco,<br> California, CA 94108 </p>
+                                <p> Palestine <br> Gaza, El-Shegaea </p>
                             </div>
                             <p>
                                 <i class="fas fa-phone-alt"></i>
-                                +1 315 369 5943
+                                {{ $number->number }}
                             </p>
-                            <p class="mb-0">
+                            <p class="mb-0">    
                                 <i class="fas fa-envelope"></i>
-                                doccure@example.com
+                                khalddawd967@example.com
                             </p>
                         </div>
                     </div>

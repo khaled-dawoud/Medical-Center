@@ -1,6 +1,11 @@
-<!-- To run the project on your host(device), please follow these steps-->
-1- Take a copy of a file .env.example and rename it to .env
-2- Run the command (composer install)
-3- Run the command php artisan key:generate
-4- Run php artisan migrate
-<!-- thanks -->
+<!-- About The Project -->
+A project that contains several pages and enables the user (the patient) to find a suitable doctor and book an appointment with him. The project contains a control panel that enables the doctor to add his available data and appointments and publish health articles as well. The user can pay and evaluate the doctor after booking.
+
+<!-- technology and tools  -->
+- PHP Larave.
+- JavaScript.
+- MySQL.
+- Git.
+- HTML.
+- CSS.
+- APIs (Hyperpay Payment Gateway).
